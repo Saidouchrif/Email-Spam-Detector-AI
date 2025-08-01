@@ -1,0 +1,27 @@
+# Utiliser une image officielle de Python avec Jupyter
+FROM jupyter/scipy-notebook:latest
+
+# Créer un répertoire de travail
+WORKDIR /home/jovyan/work
+
+# Copier le notebook dans le conteneur
+COPY Spam1.ipynb .
+
+# Installer les dépendances spécifiques utilisées dans le notebook
+# (nltk, sklearn, pandas, seaborn, matplotlib, imblearn, etc.)
+RUN pip install --no-cache-dir \
+    nltk \
+    scikit-learn \
+    pandas \
+    seaborn \
+    matplotlib \
+    imbalanced-learn
+
+# Télécharger les ressources nécessaires pour nltk
+RUN python3 -m nltk.downloader punkt stopwords
+
+# Exposer le port du notebook
+EXPOSE 8888
+
+# Lancer Jupyter Notebook
+CMD ["start-notebook.sh", "--NotebookApp.token=''", "--NotebookApp.password=''"]
