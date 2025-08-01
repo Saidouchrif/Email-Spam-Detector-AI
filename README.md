@@ -41,9 +41,9 @@ Le code est contenu dans le notebook Jupyter `Spam1.ipynb`.
 
 ### 📁 Structure du projet
 
-spam-detector/
+EmailAiModel/
 ├── app.py
 ├── DataSet_Emails.csv
-└── README.md
-└── Spam1.ipynb
+├── README.md
+├── Spam1.ipynb
 └── tfidf_vectorizer.pkl
